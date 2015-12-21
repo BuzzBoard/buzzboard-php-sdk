@@ -11,10 +11,10 @@ API [documentation](https://api.buzzboard.com/documentation)
 require __DIR__ . '/vendor/autoload.php';
 
 ############################## AUTH ###################################
-BuzzBoard::setKey('YOUR_API_KEY');
+Buzzboard::setKey('YOUR_API_KEY');
 
 // default response format is xml, for json format. Add the following line.
-BuzzBoard::$format = 'json';
+Buzzboard::$format = 'json';
 #######################################################################
 ########################## CREATE LISTING #############################
 #######################################################################
@@ -36,7 +36,7 @@ $data['contact_name'] = 'John Doe'; // optional - contact persons name
 $data['contact_email'] = 'contact_person@email.com'; // optional - contact persons email address
 $data['contact_phone'] = '132-456-7891'; // optional - contact persons phone number
 
-$response = BuzzBoard::create($data);
+$response = Buzzboard::create($data);
 
 echo PHP_EOL;
 // for xml
@@ -48,7 +48,7 @@ print_r($result);
 ########################### GET AUDIT #################################
 #######################################################################
 
-$response = BuzzBoard::audit('LISTING_ID');
+$response = Buzzboard::audit('LISTING_ID');
 
 // json
 $result = json_decode($response);
@@ -61,7 +61,7 @@ print_r($result->listing);
 ######################## REGENERATE AUDIT #############################
 #######################################################################
 
-$response = BuzzBoard::regenerate('LISTING_ID');
+$response = Buzzboard::regenerate('LISTING_ID');
 // json
 $result = json_decode($response);
 print_r($result->response->listing);
