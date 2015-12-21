@@ -7,7 +7,7 @@ The Buzzboard SDK can be installed via [composer](https://getcomposer.org/)
 API [documentation](https://api.buzzboard.com/documentation)
 
 ## Usage
-<code>
+<pre>
 require __DIR__ . '/vendor/autoload.php';
 
 ############################## AUTH ###################################
@@ -42,4 +42,4 @@ echo PHP_EOL;
 // for xml
 $result = simplexml_load_string($response);
 print_r($result);
-</code>
+</pre>
