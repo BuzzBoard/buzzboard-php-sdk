@@ -65,6 +65,7 @@ $response = BuzzBoard::regenerate('LISTING_ID');
 // json
 $result = json_decode($response);
 print_r($result->response->listing);
+// xml
 $result = simplexml_load_string($response);
 print_r($result->listing);
 
