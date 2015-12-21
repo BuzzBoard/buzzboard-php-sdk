@@ -4,7 +4,7 @@
 The BuzzBoard SDK can be installed via [composer](https://getcomposer.org/)
 
 ## Documentation
-API [documentation](https://api.buzzboard.com/documentation) &amp; [Response Codes](https://api.buzzboard.com/documentation/responseCodes/)
+API [documentation](https://api.buzzboard.com/documentation) &amp; [Response Codes](https://api.buzzboard.com/documentation/#api-ResponseCodes)
 
 ## Usage
 <pre>
