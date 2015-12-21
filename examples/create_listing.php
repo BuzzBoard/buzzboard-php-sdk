@@ -4,11 +4,10 @@
  * Response codes : http://api.buzzboard.com/documentation/responseCodes/
  */
 
-require __DIR__ . '/BuzzBoard.php';
+require __DIR__ . '/vendor/autoload.php';
 
 ############################## AUTH ###################################
 BuzzBoard::setKey('YOUR_API_KEY');
-//BuzzBoard::setKey('YOUR_API_KEY');
 
 // default response format is xml, for json format. Add the following line.
 BuzzBoard::$format = 'json';
