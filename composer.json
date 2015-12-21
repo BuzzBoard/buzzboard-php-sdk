@@ -1,0 +1,23 @@
+{
+    "name": "BuzzBoard/buzzboard-php-sdk",
+    "type": "library",
+    "description": "BuzzBoard PHP SDK",
+    "keywords": ["BuzzBoard"],
+    "homepage": "https://github.com/BuzzBoard/buzzboard-php-sdk",
+    "authors": [
+        {
+            "name": "Mir Adnan",
+            "email": "adnan@vsplash.net",
+            "homepage": "https://www.buzzboard.com",
+            "role": "Engineer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "BuzzBoard": "src"
+        }
+    }
+}
