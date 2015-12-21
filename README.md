@@ -5,6 +5,7 @@ The BuzzBoard SDK can be installed via [composer](https://getcomposer.org/)
 
 ## Documentation
 API [documentation](https://api.buzzboard.com/documentation)
+API [Response Codes](https://api.buzzboard.com/documentation/responseCodes/)
 
 ## Usage
 <pre>
@@ -68,5 +69,4 @@ print_r($result->response->listing);
 // xml
 $result = simplexml_load_string($response);
 print_r($result->listing);
-
 </pre>
