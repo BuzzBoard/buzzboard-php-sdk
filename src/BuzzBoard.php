@@ -1,11 +1,11 @@
 <?php
 
 /*
- * Buzzboard PHP Class
+ * BuzzBoard PHP Class
  * @version 1.0
  */
 
-class Buzzboard {
+class BuzzBoard {
 
     const VERSION = '1.0';
 
@@ -13,13 +13,13 @@ class Buzzboard {
 
     /*
      * @protected $apiKey
-     * Provided by Buzzboard
+     * Provided by BuzzBoard
      */
     protected static $__apiKey = null;
 
     /*
      * @public $responseType
-     * Buzzboard API v1.0 supports json and xml response types.
+     * BuzzBoard API v1.0 supports json and xml response types.
      * Default is set to json. However, you can change to xml as per your need.
      */
     public static $format = 'xml';
@@ -46,13 +46,13 @@ class Buzzboard {
             self::$__apiKey = $apiKey;
             return;
         }
-        trigger_error("Buzzboard::setAuth(); [Missing param API Key]", E_USER_ERROR);
+        trigger_error("BuzzBoard::setAuth(); [Missing param API Key]", E_USER_ERROR);
     }
 
     /*
      * @method audit
      * @access public
-     * @param string $listingID [Buzzboard listing id]
+     * @param string $listingID [BuzzBoard listing id]
      * @return object response
      */
 
@@ -60,7 +60,7 @@ class Buzzboard {
         if ($listingID !== null) {
             return self::__request(__FUNCTION__, array('listing_id' => $listingID));
         } else {
-            trigger_error("Buzzboard::audit(); [Missing param listing_id]", E_USER_ERROR);
+            trigger_error("BuzzBoard::audit(); [Missing param listing_id]", E_USER_ERROR);
         }
         return false;
     }
@@ -81,7 +81,7 @@ class Buzzboard {
         # validating mandatory params
         foreach ($mandatoryParams AS $param):
             if (!isset($listing[$param]) || $listing[$param] == '') {
-                trigger_error("Buzzboard::create(): [Missing parameter '$param'] %s", E_USER_WARNING);
+                trigger_error("BuzzBoard::create(): [Missing parameter '$param'] %s", E_USER_WARNING);
                 return false;
             }
         endforeach;
@@ -124,7 +124,7 @@ class Buzzboard {
         $paramsString = implode('&', $fields);
         # open connection
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Buzzboard/API');
+        curl_setopt($curl, CURLOPT_USERAGENT, 'BuzzBoard/API');
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_URL, self::$endpoint . 'v' . self::VERSION . '/listings/' . $action . '.' . self::$format);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
