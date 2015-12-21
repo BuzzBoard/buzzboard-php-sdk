@@ -1,4 +1,4 @@
-## The Buzzboard SDK for PHP
+## The BuzzBoard SDK for PHP
 
 ## Installation
 The BuzzBoard SDK can be installed via [composer](https://getcomposer.org/)
