@@ -25,5 +25,10 @@
         "psr-0": {
             "BuzzBoard": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Facebook\\Tests\\": "tests/"
+        }
     }
 }
