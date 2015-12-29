@@ -28,7 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Facebook\\Tests\\": "tests/"
+            "Buzzboard\\Tests\\": "tests/"
         }
     }
 }
