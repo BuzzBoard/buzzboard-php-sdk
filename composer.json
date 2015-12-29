@@ -13,7 +13,13 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "ext-mbstring": "*",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "guzzlehttp/guzzle": "*"
     },
     "autoload": {
         "psr-0": {
