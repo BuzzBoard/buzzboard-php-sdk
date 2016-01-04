@@ -8,8 +8,9 @@ php:
   - nightly
   
 before_script:
-  - composer self-update
-  - composer update
+  - /home/travis/.phpenv/versions/5.4/bin/composer self-update
+  - /home/travis/.phpenv/versions/5.4/bin/composer update
+  
 before_install:
   - /home/travis/.phpenv/versions/5.4/bin/composer self-update
   - /home/travis/.phpenv/versions/5.4/bin/composer update
