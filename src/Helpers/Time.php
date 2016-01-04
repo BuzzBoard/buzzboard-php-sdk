@@ -82,10 +82,8 @@ class Time {
      * @return string
      */
     public static function getSunriseTime($latitude, $longitude, $timestamp = null, $gmtOffset = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
-        if ($gmtOffset === null) {
+        $timestamp = self::checkTimestamp($timestamp);
+        if (!$gmtOffset) {
             $gmtOffset = self::getGmtOffset();
         }
         return date_sunrise($timestamp, SUNFUNCS_RET_STRING, $latitude, $longitude, ini_get('date.sunrise_zenith'), $gmtOffset);
@@ -101,9 +99,7 @@ class Time {
      * @return string
      */
     public static function getSunsetTime($latitude, $longitude, $timestamp = null, $gmtOffset = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         if ($gmtOffset === null) {
             $gmtOffset = self::getGmtOffset();
         }
@@ -161,9 +157,7 @@ class Time {
      * @return string
      */
     public static function getIso8601Date($timestamp = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         return date("c", $timestamp);
     }
 
@@ -176,9 +170,7 @@ class Time {
      * @return string
      */
     public static function getRfc2822Date($timestamp = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         return date('r', $timestamp);
     }
 
@@ -190,9 +182,7 @@ class Time {
      * @return int
      */
     public static function getNumericDate($timestamp = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         return (int) date('Ymd', $timestamp);
     }
 
@@ -204,9 +194,7 @@ class Time {
      * @return int
      */
     public static function getNumericMonth($timestamp = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         return (int) date('Ym', $timestamp);
     }
 
@@ -218,9 +206,7 @@ class Time {
      * @return string
      */
     public static function getTime($timestamp = null) {
-        if ($timestamp === null) {
-            $timestamp = time();
-        }
+        $timestamp = self::checkTimestamp($timestamp);
         return date("Y-m-d H:i:s", $timestamp);
     }
 
@@ -230,10 +216,20 @@ class Time {
      * @return string
      */
     public static function getDate($timestamp = null) {
+        $timestamp = self::checkTimestamp($timestamp);
+        return date("Y-m-d", $timestamp);
+    }
+
+    /**
+     * Return current timestamp
+     * @param null|int $timestamp If not set, current timestamp will be used.
+     * @return current timestamp
+     */
+    protected function checkTimestamp($timestamp = null) {
         if ($timestamp === null) {
             $timestamp = time();
         }
-        return date("Y-m-d", $timestamp);
+        return $timestamp;
     }
 
     /**
@@ -289,8 +285,8 @@ class Time {
     }
 
     /**
-     * Checks is given timestamp is in this month
-     * @param int $timestamp
+     * Checks is given date is in this month
+     * @param int $date
      * @return boolean True if date is in this month
      */
     public static function isThisMonth($date) {
