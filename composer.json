@@ -1,5 +1,5 @@
 {
-    "name": "BuzzBoard/buzzboard-php-sdk",
+    "name": "buzzboard/buzzboard-php-sdk",
     "type": "library",
     "description": "BuzzBoard PHP SDK",
     "keywords": ["BuzzBoard", "BuzzBoard SDK"],
