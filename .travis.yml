@@ -10,7 +10,6 @@ php:
 before_script:
   - composer self-update
   - composer update
-sudo: required
 before_install:
-  - php /home/travis/.phpenv/versions/5.4/bin/composer.phar self-update
-  - php /home/travis/.phpenv/versions/5.4/bin/composer.phar update
+  - /home/travis/.phpenv/versions/5.4/bin/composer self-update
+  - /home/travis/.phpenv/versions/5.4/bin/composer update
