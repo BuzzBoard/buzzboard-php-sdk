@@ -15,4 +15,4 @@ before_script:
 env:
   - TESTFOLDER=tests
 install:
-  - /home/travis/.phpenv/versions/5.4/bin/composer install
+  - composer install
