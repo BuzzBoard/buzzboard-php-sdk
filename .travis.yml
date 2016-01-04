@@ -12,5 +12,9 @@ install:
   - composer install
 script: 
   - phpunit --configuration phpunit.xml
-  - phpunit BuzzBoardTestClient.php
-  - phpunit BuzzBoardTestCategories.php
+  - phpunit tests/BuzzBoardTestClient.php
+  - phpunit tests/BuzzBoardTestCategories.php
+# whitelist
+branches:
+  only:
+    - master
