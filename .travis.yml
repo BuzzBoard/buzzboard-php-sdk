@@ -11,7 +11,3 @@ php:
 before_script:
   - /home/travis/.phpenv/versions/5.4/bin/composer self-update
   - /home/travis/.phpenv/versions/5.4/bin/composer update
-  
-before_install:
-  - /home/travis/.phpenv/versions/5.4/bin/composer self-update
-  - /home/travis/.phpenv/versions/5.4/bin/composer update
