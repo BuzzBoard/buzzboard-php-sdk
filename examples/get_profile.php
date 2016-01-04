@@ -4,10 +4,8 @@ require __DIR__ . '/config.php';
 
 use BuzzBoard\Client;
 
-$client = new Client();
-
 ############################## AUTH ###################################
-$client->setKey('YOUR_API_KEY');
+$client = new Client('YOUR_API_KEY');
 
 #######################################################################
 ########################### GET AUDIT #################################

@@ -18,6 +18,8 @@ namespace BuzzBoard;
 use BuzzBoard\Helpers\Text;
 use BuzzBoard\Helpers\Url;
 use BuzzBoard\Helpers\Time;
+use BuzzBoard\Network\Http;
+use BuzzBoard\Exceptions\InvalidArgumentException;
 
 /**
  * Class BuzzBoard\Profile
@@ -25,6 +27,8 @@ use BuzzBoard\Helpers\Time;
  * @package BuzzBoard
  */
 class Profile {
+
+    const PROFILE_CREATED_RESPONSE_CODE = 1019;
 
     /**
      *
@@ -37,61 +41,12 @@ class Profile {
      * @var int Profile Id
      */
     protected $id;
-    protected $data = [];
 
-//    /**
-//     *
-//     * @var string business name
-//     */
-//    public $business;
-//
-//    /**
-//     *
-//     * @var string website
-//     */
-//    public $website;
-//
-//    /**
-//     *
-//     * @var string phone
-//     */
-//    public $phone;
-//
-//    /**
-//     *
-//     * @var string street
-//     */
-//    public $street;
-//
-//    /**
-//     *
-//     * @var string city
-//     */
-//    public $city;
-//
-//    /**
-//     *
-//     * @var string state
-//     */
-//    public $state;
-//
-//    /**
-//     *
-//     * @var string zip
-//     */
-//    public $zip;
-//
-//    /**
-//     *
-//     * @var string country_code
-//     */
-//    public $country_code;
-//
-//    /**
-//     *
-//     * @var string 
-//     */
-//    public $username;
+    /**
+     *
+     * @var array 
+     */
+    protected $data = [];
 
     /**
      * 
@@ -99,6 +54,8 @@ class Profile {
      */
     public function __construct(\BuzzBoard\Client $client) {
         $this->client = $client;
+        # Set API Key
+        $this->data['apikey'] = $client->getKey();
     }
 
     /**
@@ -108,40 +65,49 @@ class Profile {
      */
     public function get($id = 0) {
 
-        $id = 0;
-        self::load();
+        if (!$id) {
+            throw new InvalidArgumentException();
+        }
 
-        return (int) $id;
+        $this->data['id'] = $id;
+
+        $request = Http::get('listings/audit', $this->data);
+        $response = $request->getBody();
+
+        return $response->listing;
     }
 
     /**
      * 
      * @param array $data
-     * @return type
+     * @return listing Id
      */
     public function save(array $data = []) {
 
-        if (!empty($data)) {
-            self::load($data);
+        if (!empty($data) && self::load($data)) {
+            $request = Http::post('listings/create', $this->data);
+            $response = $request->getBody();
+            return $response->listing->id;
         }
-
-        $id = null;
-        if (self::validate()) {
-            $response = Network\Http::request('listings/create', $this->data);
-            $id = $response->id;
-        }
-
-        return $id;
     }
 
     /**
      * 
      * @param int $id
-     * @return array
+     * @return boolean
      */
     public function regenerate($id = 0) {
-        $this->id = $id;
-        return true;
+
+        if (!$id) {
+            throw new InvalidArgumentException();
+        }
+
+        $this->data['id'] = $id;
+
+        $request = Http::get('listings/' . __FUNCTION__, $this->data);
+        $response = $request->getBody();
+
+        return $response->code == Network\Response::SUCCESS_CODE ? true : false;
     }
 
     /**
@@ -171,7 +137,7 @@ class Profile {
         if (
                 !$this->business ||
                 !$this->phone ||
-                !$this->street ||
+                !$this->address ||
                 !$this->city ||
                 !$this->state ||
                 !$this->zip ||
@@ -182,6 +148,7 @@ class Profile {
         ) {
             throw new Exceptions\ProfileValidationFailed();
         }
+
         return true;
     }
 

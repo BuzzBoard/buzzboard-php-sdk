@@ -13,4 +13,5 @@ return array(
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Buzzboard\\Tests\\' => array($baseDir . '/tests'),
+    'BuzzBoard\\' => array($baseDir . '/src'),
 );

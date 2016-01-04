@@ -31,6 +31,11 @@ use BuzzBoard\Exceptions\InvalidArgumentException;
 class Http {
 
     /**
+     * @const MAX connection timeout
+     */
+    const MAX_TIMEOUT = 10;
+
+    /**
      *
      * @var string
      */
@@ -38,34 +43,51 @@ class Http {
 
     /**
      *
+     * @var int
+     */
+    public static $requestCount = 0;
+
+    /**
+     *
      * @var array 
      */
     protected static $options = [
-        'cookies' => false
+        'cookies' => false,
+        'verify' => true,
+        'connect_timeout' => 3,
+        'timeout' => Http::MAX_TIMEOUT,
+        'debug' => false,
+        'decode_content' => 'gzip',
+        'http_errors' => false,
+        'allow_redirects' => [
+            'protocols' => ['http', 'https'],
+        ]
     ];
 
     /**
      * 
-     * @param type $path
+     * @param string $path
      * @param array $params
      * @return array response
      */
     public static function get($path = null, array $params = []) {
         self::builUrl($path, $params);
         $client = static::getClient()->request('GET', static::getUrl());
-        return json_decode((string) $client->getBody(), true);
+        static::$requestCount++;
+        return new Response($client);
     }
 
     /**
      * 
-     * @param type $path
+     * @param string $path
      * @param array $headers
      * @return array response
      */
     public static function post($path = null, array $headers = []) {
-        self::builUrl($path);
+        self::builUrl($path, $headers);
+        static::$requestCount++;
         $client = (new HttpClient(static::$options))->request('POST', static::getUrl(), $headers = []);
-        return json_decode((string) $client->getBody(), true);
+        return new Response($client);
     }
 
     /**
@@ -78,7 +100,15 @@ class Http {
 
     /**
      * 
-     * @param type $url
+     * @return string
+     */
+    public static function getUrl() {
+        return static::$url;
+    }
+
+    /**
+     * 
+     * @param string $url
      * @return string
      * @throws InvalidArgumentException
      */
@@ -87,15 +117,19 @@ class Http {
             throw new InvalidArgumentException();
         }
 
-        return static::$url = 'https://' . Client::ENDPOINT . '/' . Client::VERSION . '/' . $url . '?=' . http_build_query($params);
-    }
+        if (!empty($params)) {
+            $query = '?' . http_build_query($params);
+        } else {
+            $query = '';
+        }
 
-    /**
-     * 
-     * @return string
-     */
-    public static function getUrl() {
-        return static::$url;
+        if (strpos($url, '/') === 0) {
+            $endpoint = Client::ENDPOINT . $url;
+        } else {
+            $endpoint = Client::ENDPOINT . '/v' . Client::VERSION . '/' . $url;
+        }
+
+        return static::$url = $endpoint . '.json' . $query;
     }
 
 }

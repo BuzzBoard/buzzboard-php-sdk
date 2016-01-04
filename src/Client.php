@@ -30,7 +30,7 @@ class Client {
     /**
      * const API Host URL
      */
-    const ENDPOINT = 'https://api.buzzboard.com';
+    const ENDPOINT = 'http://api.buzzboard.com';
 
     /*
      * @protected $apiKey
@@ -56,7 +56,7 @@ class Client {
      * @return \BuzzBoard\Client
      * @throws Exceptions\InvalidArgumentException
      */
-    public static function setKey($apiKey = null) {
+    public function setKey($apiKey = null) {
         if (null === $apiKey) {
             throw new Exceptions\InvalidArgumentException();
         }
@@ -70,7 +70,7 @@ class Client {
      * 
      * @return string
      */
-    public static function getKey() {
+    public function getKey() {
         return $this->__apiKey;
     }
 

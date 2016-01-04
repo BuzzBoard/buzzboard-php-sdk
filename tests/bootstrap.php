@@ -2,11 +2,15 @@
 
 date_default_timezone_set('America/New_York');
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-use BuzzBoard\ClientTest;
+define('TEST_API_KEY', md5(152));
+define('TEST_PROFILE_ID', md5(1307463));
 
-// Delete the temp test user after all tests have fired
+echo PHP_EOL;
+print "API_KEY = " . TEST_API_KEY . PHP_EOL;
+
+# just to log while were testing
 register_shutdown_function(function () {
-    print "\nTotal requests made : " . ClientTest::$requestCount . "\n\n";
+    print "\nTotal requests made : " . BuzzBoard\Network\Http::$requestCount . "\n\n";
 });

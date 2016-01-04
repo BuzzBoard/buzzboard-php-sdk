@@ -19,6 +19,7 @@ namespace BuzzBoard\Helpers;
  * Class BuzzBoard\Helpers\Text
  * 
  * @package BuzzBoard
+ * @author Mir Adnan
  */
 class Text {
 
