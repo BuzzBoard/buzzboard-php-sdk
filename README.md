@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/BuzzBoard/buzzboard-php-sdk.svg)](https://travis-ci.org/BuzzBoard/buzzboard-php-sdk)
 [![Latest Stable Version](https://img.shields.io/badge/Latest%20Stable-1.0-blue.svg)](https://packagist.org/packages/buzzboard/buzzboard-php-sdk)
-[![Build Status](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/?branch=master)
 
 ## Installation
