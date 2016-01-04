@@ -56,7 +56,7 @@ class BuzzBoardTestProfile extends \PHPUnit_Framework_TestCase {
         $profile->country_code = 'us';
 
         // Account Manager (under which this listing should be listed on BuzzBoard)
-        $profile->username = 'qasalesrep1@vsplash.net'; // required
+        $profile->username = TEST_USERNAME; // required
         // Contact Person
         $profile->contact_name = 'John Doe'; // optional - contact persons name
         $profile->contact_email = 'john@example.com'; // optional - contact persons email address
