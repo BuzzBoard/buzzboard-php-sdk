@@ -1,7 +1,7 @@
 # BuzzBoard SDK for PHP
 
 [![Build Status](https://travis-ci.org/BuzzBoard/buzzboard-php-sdk.svg)](https://travis-ci.org/BuzzBoard/buzzboard-php-sdk)
-[![Latest Stable Version](https://img.shields.io/badge/Latest%20Stable-1.0-blue.svg)](https://travis-ci.org/BuzzBoard/buzzboard-php-sdk)
+[![Latest Stable Version](https://img.shields.io/badge/Latest%20Stable-1.0-blue.svg)](https://packagist.org/packages/buzzboard/buzzboard-php-sdk)
 
 ## Installation
 The BuzzBoard SDK can be installed via [composer](https://getcomposer.org/)
