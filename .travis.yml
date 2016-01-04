@@ -9,10 +9,8 @@ php:
   - 7.0
   - hhvm
   - nightly  
-before_script:
-  - /home/travis/.phpenv/versions/5.4/bin/composer self-update
-  - /home/travis/.phpenv/versions/5.4/bin/composer update
 env:
   - TESTFOLDER=tests
 install:
+  - composer self-update
   - composer install
