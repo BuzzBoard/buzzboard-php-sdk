@@ -3,7 +3,8 @@
     "type": "library",
     "description": "BuzzBoard PHP SDK",
     "keywords": ["BuzzBoard", "BuzzBoard SDK"],
-    "homepage": "https://github.com/BuzzBoard/buzzboard-php-sdk",
+    "homepage": "https://github.com/buzzboard/buzzboard-php-sdk",
+    "license" : "BuzzBoard",
     "authors": [
         {
             "name": "Mir Adnan",
