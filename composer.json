@@ -14,16 +14,16 @@
     ],
     "require": {
         "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "*",
         "ext-mbstring": "*",
         "ext-curl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
-        "guzzlehttp/guzzle": "*"
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-0": {
-            "BuzzBoard": "src"
+            "BuzzBoard": "src/"
         }
     },
     "autoload-dev": {
