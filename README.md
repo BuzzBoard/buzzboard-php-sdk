@@ -13,7 +13,7 @@ composer require buzzboard/buzzboard-php-sdk
 ## Documentation
 API [documentation](https://api.buzzboard.com/documentation) &amp; [Response Codes](https://api.buzzboard.com/documentation/#api-ResponseCodes)
 
-## Authenticate
+## Authentication
 ```php
 require __DIR__ . '/vendor/autoload.php';
 use BuzzBoard\Client;
