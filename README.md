@@ -6,73 +6,60 @@
 
 ## Installation
 The BuzzBoard SDK can be installed via [composer](https://getcomposer.org/)
-<pre>
+```php
 composer require buzzboard/buzzboard-php-sdk
-</pre>
+```
 
 ## Documentation
 API [documentation](https://api.buzzboard.com/documentation) &amp; [Response Codes](https://api.buzzboard.com/documentation/#api-ResponseCodes)
 
-## Usage
-<pre>
+## Authenticate
+```php
 require __DIR__ . '/vendor/autoload.php';
+use BuzzBoard\Client;
 
-############################## AUTH ###################################
-BuzzBoard::setKey('YOUR_API_KEY');
+$client = new Client('YOUR_API_KEY');
+```
 
-// default response format is xml, for json format. Add the following line.
-BuzzBoard::$format = 'json';
-#######################################################################
-########################## CREATE LISTING #############################
-#######################################################################
-
-$data['business'] = 'The business name'; // required
-$data['website'] = 'http://thebusinessname.com'; // optional
-$data['phone'] = '123456798'; // required
-$data['address'] = 'address'; // required
-$data['city'] = 'city'; // required
-$data['state'] = 'state'; // required
-$data['zip'] = '123456'; // required
+## Add Profile
+```php
+$profile = new BuzzBoard\Profile($client);
+$profile->business = 'The business name'; // required
+$profile->website = 'http://thebusinessname.com'; // optional
+$profile->phone = '123456798'; // required
+$profile->address = 'street address'; // required
+$profile->city = 'city'; // required
+$profile->state = 'state'; // required
+$profile->zip = '50001'; // required
 // ISO 3166-1 country code (http://en.wikipedia.org/wiki/ISO_3166-1)
-$data['country_code'] = 'us';
+$profile->country_code = 'us';
 
 // Account Manager (under which this listing should be listed on BuzzBoard)
-$data['username'] = 'my_username'; // required
+$profile->username = 'my_username'; // required
 // Contact Person
-$data['contact_name'] = 'John Doe'; // optional - contact persons name
-$data['contact_email'] = 'contact_person@email.com'; // optional - contact persons email address
-$data['contact_phone'] = '132-456-7891'; // optional - contact persons phone number
+$profile->contact_name = 'John Doe'; // optional - contact persons name
+$profile->contact_email = 'john@example.com'; // optional - contact persons email address
+$profile->contact_phone = '132-456-7891'; // optional - contact persons phone number
 
-$response = BuzzBoard::create($data);
+// Profile ID
+$id = $profile->save();
 
-echo PHP_EOL;
-// for xml
-$result = simplexml_load_string($response);
-print_r($result);
+```
+
+## Get Profile
+```php
+$profile = new BuzzBoard\Profile($client);
+$details = $profile->get($id);
+
+print_r($details);
+```
+
+## Regenerate Profile
+```php
+$profile = new BuzzBoard\Profile($client);
+$running = $profile->regenerate('PROFILE_ID');
+
+var_export($running); // boolean
+```
 
 
-#######################################################################
-########################### GET AUDIT #################################
-#######################################################################
-
-$response = BuzzBoard::audit('LISTING_ID');
-
-// json
-$result = json_decode($response);
-print_r($result->response->listing);
-// xml
-$result = simplexml_load_string($response);
-print_r($result->listing);
-
-#######################################################################
-######################## REGENERATE AUDIT #############################
-#######################################################################
-
-$response = BuzzBoard::regenerate('LISTING_ID');
-// json
-$result = json_decode($response);
-print_r($result->response->listing);
-// xml
-$result = simplexml_load_string($response);
-print_r($result->listing);
-</pre>
