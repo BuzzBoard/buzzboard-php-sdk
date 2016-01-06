@@ -1,6 +1,6 @@
 # BuzzBoard SDK for PHP
 
-[![Build Status](https://travis-ci.org/buzzboard/buzzboard-php-sdk.svg?branch=master)](https://travis-ci.org/buzzboard/buzzboard-php-sdk)
+[![Build Status](https://scrutinizer-ci.com/g/buzzboard/buzzboard-php-sdk/badges/build.png?b=master)](https://travis-ci.org/buzzboard/buzzboard-php-sdk)
 [![Latest Stable Version](https://img.shields.io/badge/Latest%20Stable-master-blue.svg)](https://packagist.org/packages/buzzboard/buzzboard-php-sdk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/BuzzBoard/buzzboard-php-sdk/?branch=master)
 
